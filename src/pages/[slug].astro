@@ -1,0 +1,92 @@
+---
+import Layout from "../layouts/Layout.astro";
+export async function getStaticPaths() {
+    const req = await fetch("https://rickandmortyapi.com/api/character");
+    const allCharactersRaw = await req.json();
+    const characters = allCharactersRaw.results;
+    return characters.map((character) => ({
+        params: {
+            slug: character.id,
+        },
+        props: {
+            character,
+        },
+    }));
+}
+const { character } = Astro.props;
+const req = await fetch("https://official-joke-api.appspot.com/random_joke");
+const joke = await req.json();
+---
+
+<Layout>
+    <section class="main">
+        <article>
+            <h3>{character.name}</h3>
+            <img src={character.image} alt="character image" />
+        </article>
+        <article class="bio">
+            <ul>
+                <li>Species: {character.species}</li>
+                <li>Status: {character.status}</li>
+                <li>Gender: {character.gender}</li>
+                <li>Origin: {character.origin.name}</li>
+                <li>Location: {character.location.name}</li>
+            </ul>
+            <div>
+                <p>Question: {joke.setup}</p>
+                <p id="joke">Answer: {joke.punchline}</p>
+                <button id="jokeBtn">Reveal</button>
+            </div>
+        </article>
+    </section>
+</Layout>
+
+<style>
+    body {
+        background-color: var(--color-bg-primary);
+    }
+    section {
+        width: 75%;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: calc(100vh - 134px);
+    }
+    article {
+        flex: 1 1 auto;
+    }
+    img {
+        border: 1px solid #333;
+    }
+    .bio {
+        padding: 50px 10px;
+        height: 350px;
+    }
+    #joke {
+        display: none;
+    }
+    #joke.visible {
+        display: block;
+    }
+    #jokeBtn {
+        padding: 5px 10px;
+        background-color:blanchedalmond;
+        border: 1px solid #333;
+        box-shadow: 0 0 5px 0 #333;
+        cursor: pointer;
+    }
+    #jokeBtn:active {
+        box-shadow: none;
+
+    }
+</style>
+
+<script>
+    const joke = document.querySelector("#joke");
+    const toggleJoke = () => {
+        joke.classList.toggle("visible");
+    };
+    const btn = document.querySelector("#jokeBtn");
+    btn.addEventListener("click", () => toggleJoke());
+</script>

@@ -1,0 +1,50 @@
+---
+const req = await fetch('https://rickandmortyapi.com/api/character')
+const allCharactersRaw = await req.json()
+const allCharacters = allCharactersRaw.results
+import Sidebar from "./Sidebar.astro";
+---
+<div class='main'>
+    <Sidebar/>
+    <ul class='grid'>
+        {allCharacters.map(character=>{return <li class='card'><a href={character.id}><img src={character.image} alt='character name'/></a><div>{character.name}</div></li>})}
+    </ul>
+</div>
+
+<style>
+    .main {
+        display: flex;
+    }
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        flex: 1 1 auto;
+        margin: auto;
+    }
+    .card {
+        border: 1px solid #333;
+        border-radius: 8px;
+        margin: 5px;
+        padding: 10px 5px;
+        background-color: var(--color-bg-primary);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    .card img {
+        width: 95%;
+        border-radius: 8px;
+        border: 1px solid #333;
+        cursor: pointer;
+    }
+    .card div {
+        color: var(--color-text-primary);
+    }
+
+    @media (width > 768px) {
+        .grid {
+            max-width: 70%;
+        }
+    }
+</style>

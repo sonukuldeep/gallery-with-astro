@@ -1,0 +1,47 @@
+---
+import logo from "./images/logo.svg";
+export interface Props {
+    tagline?: string;
+}
+const { tagline = "Astro astronaut" } = Astro.props as Props;
+---
+
+<footer>
+    <div class="imageContainer"><img src={logo} alt="logo"></div>
+    <div >
+        <ul class='copyright'>
+            <li>2022 &#169; EasternDev All rights reserved</li>
+            <li>Legal Notes</li>
+        </ul>
+    </div>
+    <div class='fontawesomeicons'>
+        <i class="fa-brands fa-square-facebook"></i>
+        <i class="fa-brands fa-square-twitter"></i>
+        <i class="fa-brands fa-instagram"></i>
+    </div>
+</footer>
+
+<style>
+    footer {
+        background-color: var(--color-primary);
+        color: #fff;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        height: 4rem;
+    }
+
+    .imageContainer img {
+        width: 60px;
+    }
+    .fontawesomeicons i{
+        padding: 0 2px;
+        cursor: pointer;
+    }
+
+    @media (width > 768px) {
+        .copyright {
+            display: flex;
+        }
+    }
+</style>

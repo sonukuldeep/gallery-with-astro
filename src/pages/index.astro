@@ -1,0 +1,26 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Feature from "../components/Feature.astro";
+---
+
+<Layout>
+	<h3>NFT Showcase</h3>
+	<Feature />
+</Layout>
+
+<style>
+	h3 {
+		text-transform: uppercase;
+		text-align: center;
+		border: 1px solid #333;
+		color: var(--color-text-primary);
+		/* text-shadow: 0 0 5px #333; */
+		background-color: var(--color-bg-primary);
+		padding: 0.75rem 0;
+	}
+	.noList {
+		list-style: none;
+		color: black;
+		font-size: large;
+	}
+</style>
