@@ -7,7 +7,7 @@ import Sidebar from "./Sidebar.astro";
 <div class='main'>
     <Sidebar/>
     <ul class='grid'>
-        {allCharacters.map(character=>{return <li class='card'><a href={character.id}><img src={character.image} alt='character name'/></a><div>{character.name}</div></li>})}
+        {allCharacters.map(character=>{return <li class='card' data-status={character.status} data-species={character.species} data-origin={character.origin.name} data-location={character.location.name} data-gender={character.gender}><a href={character.id}><img src={character.image} alt='character name'/></a><div>{character.name}</div></li>})}
     </ul>
 </div>
 
@@ -48,3 +48,22 @@ import Sidebar from "./Sidebar.astro";
         }
     }
 </style>
+<script>
+    const characters = document.querySelectorAll('.card')
+    const data = JSON.parse(localStorage.getItem('data'))
+    let status = data.status
+    
+    function triggerFilter(){
+        if(status){
+            characters.forEach(character=>{
+                    const characterStatus = character.getAttribute('data-status').toUpperCase()
+                    if(status.includes(characterStatus)){
+                        character.style.display = 'none'
+
+                    }
+                
+                })
+        }
+    }
+    
+</script>

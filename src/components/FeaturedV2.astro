@@ -1,0 +1,190 @@
+---
+const req = await fetch('https://rickandmortyapi.com/api/character')
+const allCharactersRaw = await req.json()
+const allCharacters = allCharactersRaw.results
+---
+<section>
+    <article class="sidebar">
+        <div class="list"><span>Status<i class="fa-solid fa-angle-right"></i></span>
+            <ul>
+                <li class='option-status'>Alive</li>
+                <li class='option-status'>Dead</li>
+                <li class='option-status'>Unknown</li>
+            </ul>
+        </div>
+        <div class="list"><span>Status<i class="fa-solid fa-angle-right"></i></span>
+            <ul>
+                <li>Human</li>
+                <li>Alien</li>
+            </ul>
+        </div>
+        <div class="list"><span>Status<i class="fa-solid fa-angle-right"></i></span>
+            <ul>
+                <li>Earth (C-137)</li>
+                <li>Unknown</li>
+                <li>Earth (Replacement Dimension)</li>
+                <li>Abadango</li>
+            </ul>
+        </div>
+        <div class="list"><span>Status<i class="fa-solid fa-angle-right"></i></span>
+            <ul>
+                <li>Citadel of Ricks</li>
+                <li>Unknown</li>
+                <li>Earth (Replacement Dimension)</li>
+                <li>Abadango</li>
+                <li>Testicle Monster Dimension</li>
+                <li>Worldender's lair</li>
+                <li>Anatomy Park</li>
+                <li>Interdimensional Cable</li>
+            </ul>
+        </div>
+        <div class="list"><span>Status<i class="fa-solid fa-angle-right"></i></span>
+            <ul>
+                <li>Male</li>
+                <li>Female</li>
+                <li>Unknown</li>
+            </ul>
+        </div>
+    </article>
+    <article class='main'>
+        <ul class='grid'>
+            {allCharacters.map(character=>{return <li class='card' data-status={character.status} data-species={character.species} data-origin={character.origin.name} data-location={character.location.name} data-gender={character.gender}><a href={character.id}><img src={character.image} alt='character name'/></a><div>{character.name}</div></li>})}
+        </ul>
+    </article>
+</section>
+
+<style>
+    section {
+        display: flex;
+    }
+    .main {
+        outline: 1px solid #333;
+        flex: 1 1 auto;
+        display: flex;
+    }
+    .main .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        flex: 1 1 auto;
+        margin: auto;
+    }
+    .main .card {
+        border: 1px solid #333;
+        border-radius: 8px;
+        margin: 5px;
+        padding: 10px 5px;
+        background-color: var(--color-bg-primary);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    .main .card img {
+        width: 95%;
+        border-radius: 8px;
+        border: 1px solid #333;
+        cursor: pointer;
+    }
+    .main .card div {
+        color: var(--color-text-primary);
+    }
+
+    @media (width > 768px) {
+        .main .grid {
+            max-width: 70%;
+        }
+    }
+    .sidebar {
+        background-color: var(--color-bg-primary);
+        border-right: 1px solid #333;
+        width: 200px;
+    }
+    .sidebar .list {
+        text-transform: uppercase;
+        border-bottom: 1px solid #333;
+        max-height: 30px; /*max-height makes the slow animation possible */ 
+        line-height: 30px;
+        overflow: hidden;
+        transition: 0.5s ease-out;
+    }
+    .sidebar .list.activate {
+        color: var(--color-text-primary);
+        max-height: 500px;
+    }
+    .sidebar .list span {
+        padding-left: 10px;
+        background-color: aquamarine;
+        display: inline-block; 
+        width: 100%;
+        position: relative;
+    }
+    .sidebar .list ul li {
+        padding-left: 20px;
+        background-color: #fff;
+    }
+    .sidebar .list ul li:hover,.sidebar .list ul li.selected {
+        background-color: var(--color-text-primary);
+        color: #fff;
+    }
+    .sidebar .list i {
+        position: absolute;
+        right: 15px;
+        top: 20%;
+        transform: translateY(-50%);
+        transform: rotate(90deg);
+        margin: auto;
+        display: inline-block;
+        transition: 0.5s ease-in-out;
+    }
+    .sidebar .list.activate i{
+        transform: rotate(270deg);
+    }
+</style>
+<script>
+    //main grid functionality
+    const characters = document.querySelectorAll('.card')
+    let status = [] //saving selected charecter in this
+    
+    function triggerFilter(){
+        characters.forEach(character=>{
+            console.log(character.getAttribute('data-gender'))
+            const characterStatus = character.getAttribute('data-status').toUpperCase()
+            if(status.length && status.includes(characterStatus)){
+                character.style.display = 'none'
+            }
+            else {
+                character.style.display = 'flex'
+            }
+        
+        })
+    }
+    
+    //sidebar functionality
+    const list = document.querySelectorAll('.sidebar .list')
+    const span = document.querySelectorAll('.sidebar .list span')
+    span.forEach((element, index)=>{
+        element.addEventListener('click',()=>{list[index].classList.toggle('activate')})
+    })
+
+    const option_status = document.querySelectorAll('.option-status')
+    option_status.forEach(element=>{
+        element.addEventListener('click',(e)=>{filterFunction(e)})
+    })
+
+    function filterFunction(e) {
+        e.target.classList.toggle('selected')
+        const selected = e.target.innerText
+    
+
+        let filterDataStatus = status
+        
+        if(filterDataStatus.includes(selected)){
+            filterDataStatus = filterDataStatus.filter(data=>(data !== selected))
+        }
+        else {
+            filterDataStatus.push(selected)
+        }
+        status = filterDataStatus
+        triggerFilter()
+    }
+</script>
