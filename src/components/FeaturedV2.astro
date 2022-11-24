@@ -12,45 +12,45 @@ const allCharacters = allCharactersRaw.results
                 <li class='option-status'>Unknown</li>
             </ul>
         </div>
-        <div class="list"><span>Status<i class="fa-solid fa-angle-right"></i></span>
+        <div class="list"><span>Species<i class="fa-solid fa-angle-right"></i></span>
             <ul>
-                <li>Human</li>
-                <li>Alien</li>
+                <li class='option-spicies'>Human</li>
+                <li class='option-spicies'>Alien</li>
             </ul>
         </div>
-        <div class="list"><span>Status<i class="fa-solid fa-angle-right"></i></span>
+        <div class="list"><span>Origin<i class="fa-solid fa-angle-right"></i></span>
             <ul>
-                <li>Earth (C-137)</li>
-                <li>Unknown</li>
-                <li>Earth (Replacement Dimension)</li>
-                <li>Abadango</li>
+                <li class='option-origin'>Earth (C-137)</li>
+                <li class='option-origin'>Unknown</li>
+                <li class='option-origin'>Earth (Replacement Dimension)</li>
+                <li class='option-origin'>Abadango</li>
             </ul>
         </div>
-        <div class="list"><span>Status<i class="fa-solid fa-angle-right"></i></span>
+        <div class="list"><span>Location<i class="fa-solid fa-angle-right"></i></span>
             <ul>
-                <li>Citadel of Ricks</li>
-                <li>Unknown</li>
-                <li>Earth (Replacement Dimension)</li>
-                <li>Abadango</li>
-                <li>Testicle Monster Dimension</li>
-                <li>Worldender's lair</li>
-                <li>Anatomy Park</li>
-                <li>Interdimensional Cable</li>
+                <li class='option-location'>Citadel of Ricks</li>
+                <li class='option-location'>Unknown</li>
+                <li class='option-location'>Earth (Replacement Dimension)</li>
+                <li class='option-location'>Abadango</li>
+                <li class='option-location'>Testicle Monster Dimension</li>
+                <li class='option-location'>Worldender's lair</li>
+                <li class='option-location'>Anatomy Park</li>
+                <li class='option-location'>Interdimensional Cable</li>
             </ul>
         </div>
-        <div class="list"><span>Status<i class="fa-solid fa-angle-right"></i></span>
+        <div class="list"><span>Gender<i class="fa-solid fa-angle-right"></i></span>
             <ul>
-                <li>Male</li>
-                <li>Female</li>
-                <li>Unknown</li>
+                <li class='option-gender'>Male</li>
+                <li class='option-gender'>Female</li>
+                <li class='option-gender'>Unknown</li>
             </ul>
         </div>
     </article>
-    <article class='main'>
+    <main class='main'>
         <ul class='grid'>
             {allCharacters.map(character=>{return <li class='card' data-status={character.status} data-species={character.species} data-origin={character.origin.name} data-location={character.location.name} data-gender={character.gender}><a href={character.id}><img src={character.image} alt='character name'/></a><div>{character.name}</div></li>})}
         </ul>
-    </article>
+    </main>
 </section>
 
 <style>
@@ -97,13 +97,13 @@ const allCharacters = allCharactersRaw.results
     .sidebar {
         background-color: var(--color-bg-primary);
         border-right: 1px solid #333;
-        width: 200px;
+        width: 250px;
     }
     .sidebar .list {
         text-transform: uppercase;
         border-bottom: 1px solid #333;
-        max-height: 30px; /*max-height makes the slow animation possible */ 
-        line-height: 30px;
+        max-height: 50px; /*max-height makes the slow animation possible */ 
+        line-height: 50px;
         overflow: hidden;
         transition: 0.5s ease-out;
     }
@@ -129,12 +129,12 @@ const allCharacters = allCharactersRaw.results
     .sidebar .list i {
         position: absolute;
         right: 15px;
-        top: 20%;
+        top: 30%;
         transform: translateY(-50%);
         transform: rotate(90deg);
         margin: auto;
         display: inline-block;
-        transition: 0.5s ease-in-out;
+        transition: 0.3s ease-in-out;
     }
     .sidebar .list.activate i{
         transform: rotate(270deg);
@@ -147,7 +147,6 @@ const allCharacters = allCharactersRaw.results
     
     function triggerFilter(){
         characters.forEach(character=>{
-            console.log(character.getAttribute('data-gender'))
             const characterStatus = character.getAttribute('data-status').toUpperCase()
             if(status.length && status.includes(characterStatus)){
                 character.style.display = 'none'
@@ -162,6 +161,7 @@ const allCharacters = allCharactersRaw.results
     //sidebar functionality
     const list = document.querySelectorAll('.sidebar .list')
     const span = document.querySelectorAll('.sidebar .list span')
+    //list toggle functionality
     span.forEach((element, index)=>{
         element.addEventListener('click',()=>{list[index].classList.toggle('activate')})
     })
@@ -186,5 +186,166 @@ const allCharacters = allCharactersRaw.results
         }
         status = filterDataStatus
         triggerFilter()
+    }
+
+    //main grid functionality
+    // const characters = document.querySelectorAll('.card')
+    let spicies = [] //saving selected charecter in this
+    
+    function triggerFilter2(){
+        characters.forEach(character=>{
+            const characterSpicies = character.getAttribute('data-species').toUpperCase()
+            if(spicies.includes(characterSpicies)){
+                character.style.display = 'flex'
+            }
+            else {
+                character.style.display = 'none'
+            }
+        
+        })
+    }
+    
+    //sidebar functionality
+    
+    const option_spicies = document.querySelectorAll('.option-spicies')
+    option_spicies.forEach(element=>{
+        element.addEventListener('click',(e)=>{filterFunction2(e)})
+    })
+
+    function filterFunction2(e) {
+        e.target.classList.toggle('selected')
+        const selected = e.target.innerText
+    
+
+        let filterDataSpicies = spicies
+        
+        if(filterDataSpicies.includes(selected)){
+            filterDataSpicies = filterDataSpicies.filter(data=>(data !== selected))
+        }
+        else {
+            filterDataSpicies.push(selected)
+        }
+        spicies = filterDataSpicies
+        triggerFilter2()
+    }
+
+
+    let origin = [] //saving selected charecter in this
+    
+    function triggerFilter3(){
+        characters.forEach(character=>{
+            const characterorigin = character.getAttribute('data-origin').toUpperCase()
+            if(origin.includes(characterorigin)){
+                character.style.display = 'flex'
+            }
+            else {
+                character.style.display = 'none'
+            }
+        
+        })
+    }
+    
+    //sidebar functionality
+    
+    const option_origin = document.querySelectorAll('.option-origin')
+    option_origin.forEach(element=>{
+        element.addEventListener('click',(e)=>{filterFunction3(e)})
+    })
+
+    function filterFunction3(e) {
+        e.target.classList.toggle('selected')
+        const selected = e.target.innerText
+    
+
+        let filterDataorigin = origin
+        
+        if(filterDataorigin.includes(selected)){
+            filterDataorigin = filterDataorigin.filter(data=>(data !== selected))
+        }
+        else {
+            filterDataorigin.push(selected)
+        }
+        origin = filterDataorigin
+        triggerFilter3()
+    }
+
+
+    let location = [] //saving selected charecter in this
+    
+    function triggerFilter4(){
+        characters.forEach(character=>{
+            const characterlocation = character.getAttribute('data-location').toUpperCase()
+            if(location.includes(characterlocation)){
+                character.style.display = 'flex'
+            }
+            else {
+                character.style.display = 'none'
+            }
+        
+        })
+    }
+    
+    //sidebar functionality
+    
+    const option_location = document.querySelectorAll('.option-location')
+    option_location.forEach(element=>{
+        element.addEventListener('click',(e)=>{filterFunction4(e)})
+    })
+
+    function filterFunction4(e) {
+        e.target.classList.toggle('selected')
+        const selected = e.target.innerText
+    
+
+        let filterDatalocation = location
+        
+        if(filterDatalocation.includes(selected)){
+            filterDatalocation = filterDatalocation.filter(data=>(data !== selected))
+        }
+        else {
+            filterDatalocation.push(selected)
+        }
+        location = filterDatalocation
+        triggerFilter4()
+    }
+
+
+    let gender = [] //saving selected charecter in this
+    
+    function triggerFilter5(){
+        characters.forEach(character=>{
+            const charactergender = character.getAttribute('data-gender').toUpperCase()
+            if(gender.includes(charactergender)){
+                character.style.display = 'flex'
+            }
+            else {
+                character.style.display = 'none'
+            }
+        
+        })
+    }
+    
+    //sidebar functionality
+    
+    const option_gender = document.querySelectorAll('.option-gender')
+    option_gender.forEach(element=>{
+        element.addEventListener('click',(e)=>{filterFunction5(e)})
+    })
+
+    function filterFunction5(e) {
+        e.target.classList.toggle('selected')
+        const selected = e.target.innerText
+    
+
+        let filterDatagender = gender
+        
+        if(filterDatagender.includes(selected)){
+            filterDatagender = filterDatagender.filter(data=>(data !== selected))
+        }
+        else {
+            filterDatagender.push(selected)
+        }
+        gender = filterDatagender
+        triggerFilter5()
     }
 </script>
