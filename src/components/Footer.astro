@@ -1,9 +1,5 @@
 ---
-import logo from "./images/logo.svg";
-export interface Props {
-    tagline?: string;
-}
-const { tagline = "Astro astronaut" } = Astro.props as Props;
+import logo from "./images/logo.png";
 ---
 
 <footer>
@@ -23,16 +19,28 @@ const { tagline = "Astro astronaut" } = Astro.props as Props;
 
 <style>
     footer {
-        background-color: var(--color-primary);
+        /* background-color: var(--color-primary); */
         color: #fff;
         display: flex;
         justify-content: space-evenly;
         align-items: center;
         height: 4rem;
+        position: relative;
+        overflow: hidden;
+    }
+    footer::before {
+        content: "";
+        background-image: linear-gradient(#da4898,#4d70da);
+        display: block;
+        position: absolute;
+        width: 100%;
+        height: 1000px;
+        z-index: -1;
+        rotate: -30deg;
     }
 
     .imageContainer img {
-        width: 60px;
+        width: 30px;
     }
     .fontawesomeicons i{
         padding: 0 2px;
@@ -42,6 +50,14 @@ const { tagline = "Astro astronaut" } = Astro.props as Props;
     @media (width > 768px) {
         .copyright {
             display: flex;
+        }
+        .fontawesomeicons i {
+            font-size: 25px;
+        }
+    }
+    @media (width < 768px) {
+        .imageContainer {
+            display: none;
         }
     }
 </style>

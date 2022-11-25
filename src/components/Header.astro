@@ -1,5 +1,5 @@
 ---
-import logo from './images/logo.svg'
+import logo from './images/logo.png'
 ---
 <header class="header">
     <div class="container">
@@ -21,7 +21,21 @@ import logo from './images/logo.svg'
 <style>
     .header {
         height: 70px;
-        background: var(--color-primary);
+        /* background: var(--color-primary); */
+        position: relative;
+        overflow: hidden;
+    }
+    .header::before {
+        content: "";
+        background-image: linear-gradient(#da4898,#4d70da);
+        display: block;
+        position: absolute;
+        top: -400px;
+        right: -40px;
+        width: 100%;
+        height: 1000px;
+        z-index: -1;
+        rotate: -30deg;
     }
 
     .header .container {

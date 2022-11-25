@@ -5,6 +5,8 @@
   --color-secondary: #6b21a8;
   --color-bg-primary: antiquewhite;
   --color-text-primary: darkcyan;
+  --color-gradient-start: #da4898;
+  --color-gradient-end: #4d70da;
 }
 
 *,

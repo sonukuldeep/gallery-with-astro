@@ -25,6 +25,7 @@ const joke = await req.json();
             <img src={character.image} alt="character image" />
         </article>
         <article class="bio">
+            <h3>Trails</h3>
             <ul>
                 <li>Species: {character.species}</li>
                 <li>Status: {character.status}</li>
@@ -45,23 +46,38 @@ const joke = await req.json();
     body {
         background-color: var(--color-bg-primary);
     }
-    section {
+    .main {
         width: 75%;
         margin: 0 auto;
         display: flex;
         align-items: center;
         justify-content: center;
         height: calc(100vh - 134px);
+        position: relative;
+    }
+    .main::before {
+        content: url('../components/images/bg.png');
+        position: absolute;
+        display: block;
+        z-index: -2;
+        bottom: 0px;
+        right: -15%;
     }
     article {
         flex: 1 1 auto;
+        color: #fff;
+        text-shadow: 0 0 5px #333;
+    }
+    .main article:first-child h3 {
+            padding-bottom: 5px;
     }
     img {
         border: 1px solid #333;
     }
     .bio {
-        padding: 50px 10px;
+        padding: 30px 30px;
         height: 350px;
+        width: 300px;
     }
     #joke {
         display: none;
@@ -80,6 +96,32 @@ const joke = await req.json();
     #jokeBtn:active {
         box-shadow: none;
 
+    }
+
+    @media (width < 768px){
+        .main {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+        }
+        .main article{
+            flex: 0 1 auto;
+        }
+        .main article:first-child {
+            padding-top: 10px;
+            height: auto;
+            align-self: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .main article:first-child img {
+            max-width: 60%;
+        }
+        .main .bio {
+            padding: 10px;
+            height: 400px;
+        }
     }
 </style>
 
