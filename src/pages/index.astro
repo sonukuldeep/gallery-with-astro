@@ -1,20 +1,200 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import FeaturedV2 from "../components/FeaturedV2.astro";
 ---
 
 <Layout>
-	<h3>NFT Showcase</h3>
-	<FeaturedV2/>
+    <main class="main">
+        <section>
+            <article>
+                <div class="container">
+                    <ul>
+                        <li></li>
+                        <li><h1>Combine art with functionality</h1></li>
+                    </ul>
+                </div>
+            </article>
+            <article>
+                <div class="description">
+                    <h3>How about a world without boundries?</h3>
+                    <p>An open arena for both gamers and artist</p>
+                    <p>A world without limits</p>
+                    <p>And a world where only the market governed the system</p>
+                </div>
+                <h3>And what better way to make it together?</h3>
+                <div class="carousal-container">
+                    <div class="media-scroller snaps-inline">
+                        <div class="media-element">
+                            <img src="/minecraft-1.jpg" alt="" />
+                        </div>
+                        <div class="media-element">
+                            <img src="/minecraft-2.jpg" alt="" />
+                        </div>
+                        <div class="media-element">
+                            <img src="/minecraft-3.jpg" alt="" />
+                        </div>
+                        <div class="media-element">
+                            <img src="/minecraft-5.jpg" alt="" />
+                        </div>
+                        <div class="media-element">
+                            <img src="/minecraft-4.jpg" alt="" />
+                        </div>
+                    </div>
+                </div>
+            </article>
+            <article>
+                <div class="container">
+                    <ul>
+                        <li class="disable"></li>
+                        <li><h1>More things coming soon...</h1></li>
+                    </ul>
+                </div>
+            </article>
+        </section>
+    </main>
 </Layout>
 
 <style>
-	h3 {
-		text-transform: uppercase;
-		text-align: center;
-		border: 1px solid #333;
-		color: var(--color-text-primary);
-		background-color: var(--color-bg-primary);
-		padding: 0.75rem 0;
-	}
+    .main {
+        background-color: var(--color-bg-primary);
+    }
+    .main .container ul {
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+    }
+    .main .container ul li {
+        height: 740px;
+        width: 100%;
+    }
+    .main .container ul li:nth-child(1) {
+        background: url("../components/images/hero.png");
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+    .main .container ul li:nth-child(2) {
+        height: auto;
+    }
+    .main .container ul li h1 {
+        background: url("../components/images/hero.png"), rgb(255, 150, 150);
+        background-repeat: no-repeat;
+        background-position: center;
+        font-family: "Baskerville BT", sans-serif;
+        font-size: 120px;
+        text-align: center;
+        height: 100%;
+        padding: 70px 0;
+        padding-right: 20px;
+        color: transparent;
+        background-blend-mode: multiply;
+        background-clip: text;
+        -webkit-background-clip: text;
+    }
+    .description {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    .description h3, h3 {
+        font-size: xx-large;
+        color: #fff;
+        text-shadow: 0 0 5px #333;
+        text-align: center;
+        padding-top: 20px;
+    }
+    .description p {
+        font-size: x-large;
+        color: #fff;
+        text-shadow: 0 0 3px #333;
+    }
+    .container .disable {
+        display: none;
+    }
+    @media (width < 768px) {
+        .main .container ul li h1 {
+            font-size: 14vw;
+        }
+        .main .container ul li:nth-child(1) {
+            background-size: 100%;
+            height: 80vw;
+        }
+        p{
+            text-align: center;
+        }
+    }
+
+    .carousal-container {
+        position: relative;
+        overflow: hidden;
+        width: 98.5vw;
+        height: 670px;
+        
+    }
+    .media-scroller {
+        display: grid;
+        grid-auto-flow: row;
+        grid-auto-rows: 600px;
+        gap: 1rem;
+        overscroll-behavior-inline: contain;
+        /*  */
+        position: absolute;
+        display: block;
+        top: 40px;
+        left: 0;
+        width: 610px; /*width of image*/
+        max-height: 1550px; /* calc(610px * 3);  width of each image times number of images*/
+        transform: rotate(-90deg) translateY(-610px);
+        transform-origin: right top;
+        overflow-x: hidden;
+    }
+    .media-element {
+        padding: 0.3rem;
+        background: var(--color-bg-primary);
+        border-radius: 8px;
+        width: 758px;
+        height: 760px;
+        transform: rotate(90deg);
+    }
+    .media-element > img {
+        /* aspect-ratio: 16 / 9; */
+        outline: 2px solid #333;
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+    }
+
+    
+    .media-scroller {
+        -ms-overflow-style: none; /* disable scroll for chrome*/
+        scrollbar-width: none;
+    }
+    
+    .media-scroller::-webkit-scrollbar {
+        /* disable scroll for firefox*/
+        display: none;
+    }
+    @media (width < 420px) {
+        .carousal-container {
+            height: 100vw;
+        }
+        .media-scroller {
+            top: -200px;
+            max-height: 410px;
+        }
+        .media-element {
+            height: 80vw;
+            width: 100vw;
+        }
+        .snaps-inline {
+            scroll-snap-type: block mandatory;
+              scroll-padding-inline: 0.3rem;
+        }
+    
+        .snaps-inline > * {
+            scroll-snap-align: start;
+        }
+
+    }
 </style>
