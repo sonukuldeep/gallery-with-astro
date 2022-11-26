@@ -1,5 +1,45 @@
 ---
 import Layout from "../layouts/Layout.astro";
+const svgColor = "#333";
+const colonSvg = `<svg
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 210 297"
+   version="1.1"
+   id="svg5"
+   xml:space="preserve"
+   inkscape:version="1.2.1 (9c6d41e410, 2022-07-14)"
+   sodipodi:docname="colon.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"><sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="0.72515432"
+     inkscape:cx="170.30858"
+     inkscape:cy="563.32837"
+     inkscape:window-width="1920"
+     inkscape:window-height="1001"
+     inkscape:window-x="1911"
+     inkscape:window-y="66"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" /><defs
+     id="defs2" /><g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"><path
+       style="fill:#000000;stroke-width:2.39393"
+       d="m 93.863364,231.30432 -9.026317,-9.2438 8.542911,-5.04045 c 7.065942,-4.16899 22.901572,-24.22733 22.901572,-29.00844 0,-0.72973 -7.81017,-1.32676 -17.355931,-1.32676 -14.722581,0 -19.096549,-1.02315 -28.827996,-6.74335 C 40.4559,162.51795 29.196148,122.09036 45.230723,90.658236 57.343232,66.914413 76.946665,55.12763 104.31192,55.134989 c 28.02065,0.0074 46.45979,11.549519 60.56095,37.908126 4.44402,8.307015 5.26066,13.613745 5.20034,33.793705 -0.14894,49.82615 -18.22613,88.46215 -49.88618,106.62075 -6.75632,3.87509 -13.41219,7.05571 -14.79079,7.06806 -1.37861,0.0126 -6.568406,-4.13723 -11.532876,-9.22131 z M 125.6598,217.5287 c 21.43779,-19.27441 32.44389,-44.62958 35.25661,-81.22198 2.00904,-26.13696 -1.47438,-38.529614 -15.08554,-53.668512 C 123.82967,58.167576 91.098049,56.855977 65.980834,79.438507 35.960832,106.42907 41.935285,155.37738 77.365425,172.71173 c 11.013786,5.38854 14.771013,6.04847 27.627195,4.8525 8.18388,-0.76133 17.30364,-2.10876 20.26611,-2.99429 4.24087,-1.26765 5.38135,-0.65977 5.36294,2.85852 -0.0413,7.90958 -11.14146,28.64038 -20.16865,37.66758 -4.82385,4.82384 -8.1154,9.83077 -7.31458,11.12654 3.03877,4.91684 10.65157,1.9781 22.52136,-8.69388 z"
+       id="path181" /></g></svg>`;
 ---
 
 <Layout>
@@ -46,6 +86,76 @@ import Layout from "../layouts/Layout.astro";
                     <ul>
                         <li class="disable"></li>
                         <li><h1>More things coming soon...</h1></li>
+                    </ul>
+                </div>
+            </article>
+            <div class="devTitle">
+                <img src="/developers.png" alt="">
+            </div>
+            <article>
+                <div class="developers">
+                    <ul>
+                        <li>
+                            <svg
+                                width="60mm"
+                                height="100mm"
+                                viewBox="0 0 150 150"
+                                version="1.1"
+                                id="svg5"
+                                xml:space="preserve"
+                                xmlns="http://www.w3.org/2000/svg"
+                                xmlns:svg="http://www.w3.org/2000/svg"
+                                ><defs id="defs2"></defs><g
+                                    id="layer1"
+                                    transform="translate(-37.921984,-55.134986)"
+                                    ><path
+                                        style="fill:#fff;stroke-width:2.39393"
+                                        d="m 93.863364,231.30432 -9.026317,-9.2438 8.542911,-5.04045 c 7.065942,-4.16899 22.901572,-24.22733 22.901572,-29.00844 0,-0.72973 -7.81017,-1.32676 -17.355931,-1.32676 -14.722581,0 -19.096549,-1.02315 -28.827996,-6.74335 C 40.4559,162.51795 29.196148,122.09036 45.230723,90.658236 57.343232,66.914413 76.946665,55.12763 104.31192,55.134989 c 28.02065,0.0074 46.45979,11.549519 60.56095,37.908126 4.44402,8.307015 5.26066,13.613745 5.20034,33.793705 -0.14894,49.82615 -18.22613,88.46215 -49.88618,106.62075 -6.75632,3.87509 -13.41219,7.05571 -14.79079,7.06806 -1.37861,0.0126 -6.568406,-4.13723 -11.532876,-9.22131 z M 125.6598,217.5287 c 21.43779,-19.27441 32.44389,-44.62958 35.25661,-81.22198 2.00904,-26.13696 -1.47438,-38.529614 -15.08554,-53.668512 C 123.82967,58.167576 91.098049,56.855977 65.980834,79.438507 35.960832,106.42907 41.935285,155.37738 77.365425,172.71173 c 11.013786,5.38854 14.771013,6.04847 27.627195,4.8525 8.18388,-0.76133 17.30364,-2.10876 20.26611,-2.99429 4.24087,-1.26765 5.38135,-0.65977 5.36294,2.85852 -0.0413,7.90958 -11.14146,28.64038 -20.16865,37.66758 -4.82385,4.82384 -8.1154,9.83077 -7.31458,11.12654 3.03877,4.91684 10.65157,1.9781 22.52136,-8.69388 z"
+                                        id="path181"></path>
+                                </g>
+                            </svg>
+                        </li>
+                        <li>
+                            <svg
+                                width="60mm"
+                                height="100mm"
+                                viewBox="0 0 150 150"
+                                version="1.1"
+                                id="svg5"
+                                xml:space="preserve"
+                                xmlns="http://www.w3.org/2000/svg"
+                                xmlns:svg="http://www.w3.org/2000/svg"
+                                ><defs id="defs2"></defs><g
+                                    id="layer1"
+                                    transform="translate(-37.921984,-55.134986)"
+                                    ><path
+                                        style="fill:#fff;stroke-width:2.39393"
+                                        d="m 93.863364,231.30432 -9.026317,-9.2438 8.542911,-5.04045 c 7.065942,-4.16899 22.901572,-24.22733 22.901572,-29.00844 0,-0.72973 -7.81017,-1.32676 -17.355931,-1.32676 -14.722581,0 -19.096549,-1.02315 -28.827996,-6.74335 C 40.4559,162.51795 29.196148,122.09036 45.230723,90.658236 57.343232,66.914413 76.946665,55.12763 104.31192,55.134989 c 28.02065,0.0074 46.45979,11.549519 60.56095,37.908126 4.44402,8.307015 5.26066,13.613745 5.20034,33.793705 -0.14894,49.82615 -18.22613,88.46215 -49.88618,106.62075 -6.75632,3.87509 -13.41219,7.05571 -14.79079,7.06806 -1.37861,0.0126 -6.568406,-4.13723 -11.532876,-9.22131 z M 125.6598,217.5287 c 21.43779,-19.27441 32.44389,-44.62958 35.25661,-81.22198 2.00904,-26.13696 -1.47438,-38.529614 -15.08554,-53.668512 C 123.82967,58.167576 91.098049,56.855977 65.980834,79.438507 35.960832,106.42907 41.935285,155.37738 77.365425,172.71173 c 11.013786,5.38854 14.771013,6.04847 27.627195,4.8525 8.18388,-0.76133 17.30364,-2.10876 20.26611,-2.99429 4.24087,-1.26765 5.38135,-0.65977 5.36294,2.85852 -0.0413,7.90958 -11.14146,28.64038 -20.16865,37.66758 -4.82385,4.82384 -8.1154,9.83077 -7.31458,11.12654 3.03877,4.91684 10.65157,1.9781 22.52136,-8.69388 z"
+                                        id="path181"></path>
+                                </g>
+                            </svg>
+                        </li>
+                        <li>
+                            <svg
+                                width="60mm"
+                                height="100mm"
+                                viewBox="0 0 150 150"
+                                version="1.1"
+                                id="svg5"
+                                xml:space="preserve"
+                                xmlns="http://www.w3.org/2000/svg"
+                                xmlns:svg="http://www.w3.org/2000/svg"
+                                ><defs id="defs2"></defs><g
+                                    id="layer1"
+                                    transform="translate(-37.921984,-55.134986)"
+                                    ><path
+                                        style="fill:#fff;stroke-width:2.39393"
+                                        d="m 93.863364,231.30432 -9.026317,-9.2438 8.542911,-5.04045 c 7.065942,-4.16899 22.901572,-24.22733 22.901572,-29.00844 0,-0.72973 -7.81017,-1.32676 -17.355931,-1.32676 -14.722581,0 -19.096549,-1.02315 -28.827996,-6.74335 C 40.4559,162.51795 29.196148,122.09036 45.230723,90.658236 57.343232,66.914413 76.946665,55.12763 104.31192,55.134989 c 28.02065,0.0074 46.45979,11.549519 60.56095,37.908126 4.44402,8.307015 5.26066,13.613745 5.20034,33.793705 -0.14894,49.82615 -18.22613,88.46215 -49.88618,106.62075 -6.75632,3.87509 -13.41219,7.05571 -14.79079,7.06806 -1.37861,0.0126 -6.568406,-4.13723 -11.532876,-9.22131 z M 125.6598,217.5287 c 21.43779,-19.27441 32.44389,-44.62958 35.25661,-81.22198 2.00904,-26.13696 -1.47438,-38.529614 -15.08554,-53.668512 C 123.82967,58.167576 91.098049,56.855977 65.980834,79.438507 35.960832,106.42907 41.935285,155.37738 77.365425,172.71173 c 11.013786,5.38854 14.771013,6.04847 27.627195,4.8525 8.18388,-0.76133 17.30364,-2.10876 20.26611,-2.99429 4.24087,-1.26765 5.38135,-0.65977 5.36294,2.85852 -0.0413,7.90958 -11.14146,28.64038 -20.16865,37.66758 -4.82385,4.82384 -8.1154,9.83077 -7.31458,11.12654 3.03877,4.91684 10.65157,1.9781 22.52136,-8.69388 z"
+                                        id="path181"></path>
+                                </g>
+                            </svg>
+                        </li>
+                        <!-- <li><div>{colonSvg}</div></li> -->
                     </ul>
                 </div>
             </article>
@@ -97,7 +207,8 @@ import Layout from "../layouts/Layout.astro";
         align-items: center;
         flex-direction: column;
     }
-    .description h3, h3 {
+    .description h3,
+    h3 {
         font-size: xx-large;
         color: #fff;
         text-shadow: 0 0 5px #333;
@@ -120,7 +231,7 @@ import Layout from "../layouts/Layout.astro";
             background-size: 100%;
             height: 80vw;
         }
-        p{
+        p {
             text-align: center;
         }
     }
@@ -130,7 +241,6 @@ import Layout from "../layouts/Layout.astro";
         overflow: hidden;
         width: 98.5vw;
         height: 670px;
-        
     }
     .media-scroller {
         display: grid;
@@ -165,12 +275,11 @@ import Layout from "../layouts/Layout.astro";
         height: 100%;
     }
 
-    
     .media-scroller {
         -ms-overflow-style: none; /* disable scroll for chrome*/
         scrollbar-width: none;
     }
-    
+
     .media-scroller::-webkit-scrollbar {
         /* disable scroll for firefox*/
         display: none;
@@ -189,12 +298,100 @@ import Layout from "../layouts/Layout.astro";
         }
         .snaps-inline {
             scroll-snap-type: block mandatory;
-              scroll-padding-inline: 0.3rem;
+            scroll-padding-inline: 0.3rem;
         }
-    
+
         .snaps-inline > * {
             scroll-snap-align: start;
         }
+    }
 
+    .devTitle {
+        display: flex;
+        justify-content: center;
+        padding-bottom: 80px;
+    }
+    .devTitle img {
+        object-fit: contain;
+        width: 70%;
+    }
+
+    .developers {
+        width: 70%;
+        margin: auto;
+        padding-bottom: 20px;
+    }
+    .developers ul {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap:8px;
+    }
+    .developers ul li {
+        border: 8px solid #6b21a8;
+        border-radius: 50% 10%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        
+    }
+    .developers ul li::before {
+        content: "";
+        display: inline-block;
+        background-size: cover;
+        position: absolute;
+        width: 175px;
+        height: 175px;
+        top: 89px;
+        left: 67px;
+    }
+    .developers ul li:nth-child(1)::before {
+        background-image: url("https://cdn-icons-png.flaticon.com/512/7570/7570452.png");
+
+    }
+    .developers ul li:nth-child(2)::before {
+        background-image: url("https://cdn-icons-png.flaticon.com/512/3393/3393852.png");
+
+    }
+    .developers ul li:nth-child(3)::before {
+        background-image: url("https://cdn-icons-png.flaticon.com/512/2115/2115958.png");
+        top: 85px;
+        left: 62px;
+    }
+    .developers ul li::after {
+        position: absolute;
+        font-size: x-large;
+        color: #fff;
+        font-weight:800;
+        bottom: 10px;
+        left: 10px;
+        text-transform: uppercase;
+        white-space: pre;
+        text-shadow: 0 0 2px #333;
+    }
+    .developers ul li:nth-child(1)::after {
+        content: "Harry \A potter";
+    }
+    .developers ul li:nth-child(2)::after {
+        content: "hermione \A granger";
+    }
+    .developers ul li:nth-child(3)::after {
+        content: "ron \A weasley";
+    }
+    @media (width < 420px) {
+        .developers ul {
+            grid-template-columns: 1fr;
+            gap: 40px;
+        }
+        .developers ul li::before {
+            width: 175px;
+            height: 175px;
+            top: 89px;
+            left: 35px;
+        }
+        .developers ul li:nth-child(3)::before{
+            left: 30px;
+
+        }
     }
 </style>
