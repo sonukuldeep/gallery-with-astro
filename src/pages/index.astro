@@ -90,7 +90,7 @@ const colonSvg = `<svg
                 </div>
             </article>
             <div class="devTitle">
-                <img src="/developers.png" alt="">
+                <img src="/developers.png" alt="" />
             </div>
             <article>
                 <div class="developers">
@@ -236,11 +236,13 @@ const colonSvg = `<svg
         }
     }
 
+    /* carousal container starts here */
     .carousal-container {
+        --width: 670px;
         position: relative;
         overflow: hidden;
         width: 98.5vw;
-        height: 670px;
+        height: var(--width);
     }
     .media-scroller {
         display: grid;
@@ -284,6 +286,16 @@ const colonSvg = `<svg
         /* disable scroll for firefox*/
         display: none;
     }
+
+    .snaps-inline {
+        scroll-snap-type: block mandatory;
+        scroll-padding-inline: 0.3rem;
+    }
+
+    .snaps-inline > * {
+        scroll-snap-align: start;
+    }
+    
     @media (width < 420px) {
         .carousal-container {
             height: 100vw;
@@ -324,7 +336,7 @@ const colonSvg = `<svg
     .developers ul {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
-        gap:8px;
+        gap: 8px;
     }
     .developers ul li {
         border: 8px solid #6b21a8;
@@ -333,7 +345,6 @@ const colonSvg = `<svg
         align-items: center;
         justify-content: center;
         position: relative;
-        
     }
     .developers ul li::before {
         content: "";
@@ -347,11 +358,9 @@ const colonSvg = `<svg
     }
     .developers ul li:nth-child(1)::before {
         background-image: url("https://cdn-icons-png.flaticon.com/512/7570/7570452.png");
-
     }
     .developers ul li:nth-child(2)::before {
         background-image: url("https://cdn-icons-png.flaticon.com/512/3393/3393852.png");
-
     }
     .developers ul li:nth-child(3)::before {
         background-image: url("https://cdn-icons-png.flaticon.com/512/2115/2115958.png");
@@ -362,7 +371,7 @@ const colonSvg = `<svg
         position: absolute;
         font-size: x-large;
         color: #fff;
-        font-weight:800;
+        font-weight: 800;
         bottom: 10px;
         left: 10px;
         text-transform: uppercase;
@@ -389,9 +398,8 @@ const colonSvg = `<svg
             top: 89px;
             left: 35px;
         }
-        .developers ul li:nth-child(3)::before{
+        .developers ul li:nth-child(3)::before {
             left: 30px;
-
         }
     }
 </style>
